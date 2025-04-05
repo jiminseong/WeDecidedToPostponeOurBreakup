@@ -1,6 +1,8 @@
 import HomePage from '@/views/home';
 
 type PageProps = {
+    params: Record<string, never>;
+
     searchParams?: { success?: string };
 };
 
