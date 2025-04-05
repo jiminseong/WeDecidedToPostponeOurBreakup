@@ -1,6 +1,11 @@
 import HomePage from '@/views/home';
 
-export default function Page({ searchParams }: { searchParams: { success?: string } }) {
-    const isSuccess = searchParams.success === 'true';
-    return <HomePage pretty={isSuccess} />;
+type PageProps = {
+    searchParams?: { success?: string };
+};
+
+export default function Page({ searchParams }: PageProps) {
+    const success = searchParams?.success === 'true';
+
+    return <HomePage pretty={success} />;
 }
