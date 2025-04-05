@@ -1,0 +1,22 @@
+{
+    "name": "제천메이트",
+    "short_name": "제천메이트",
+    "description": "제천여행도우미-제천메이트",
+    "icons": [
+        {
+            "src": "/192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#fcfff8",
+    "theme_color": "#fcfff8",
+    "display": "standalone",
+    "id": "JCMATE"
+}

@@ -1,0 +1,14 @@
+<svg
+                    width="25"
+                    height="24"
+                    viewBox="0 0 25 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="flex-shrink-0 flex-grow-0"
+                    preserveAspectRatio="none"
+                >
+                    <path
+                        d="M16.4512 12.845L7.55422 0H0.178223V24H7.90422V11.156L16.8022 24H24.1782V0H16.4512V12.845Z"
+                        fill="#D8F1BC"
+                    ></path>
+                </svg>
