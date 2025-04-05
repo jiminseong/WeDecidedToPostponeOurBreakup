@@ -7,11 +7,15 @@ import { useSetAtom } from 'jotai';
 import { imageUrlState } from '@/app/atom/imageAtom';
 import { resultState } from '@/app/atom/resultAtom';
 import { uploadImageToS3 } from '../api/uploadImageToS3';
+import { ddayState } from '@/app/atom/ddayAtom';
+import { pointState } from '@/app/atom/pointAtom';
 
 const BottomNavigationBar = () => {
     const router = useRouter();
     const setImageUrl = useSetAtom(imageUrlState);
     const setResult = useSetAtom(resultState);
+    const setPoint = useSetAtom(pointState);
+    const setDday = useSetAtom(ddayState);
 
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -26,6 +30,9 @@ const BottomNavigationBar = () => {
             // const result = await postChatGpt(imageUrl); // GPT 전송
             if (imageUrl) {
                 setResult(true);
+                setPoint((prev) => prev + 20);
+                setDday((prev) => prev + 10);
+
                 router.push('/result');
             } else {
             }
@@ -42,14 +49,17 @@ const BottomNavigationBar = () => {
                     onClick={() => fileInputRef.current?.click()}
                     className="flex w-[50%] cursor-pointer flex-col rounded-[22px] bg-white p-[2.0125em] text-center text-[22px] font-semibold shadow-custom"
                 >
-                    <p className="text-[18px] md:text-[20px]">환경 보호</p>
-                    <p>인증 하기</p>
+                    <p className="text-[18px] font-semibold md:text-[20px]">환경 보호</p>
+                    <p className="font-bold">인증 하기</p>
                     📷<p className="text-[14px] text-[#929292]">이별 미루기</p>
                 </div>
 
-                <div className="flex w-[50%] cursor-pointer flex-col rounded-[22px] bg-white p-[2.0125em] text-center text-[22px] font-semibold shadow-custom">
-                    <p className="text-[18px] md:text-[20px]">우리의 아지트</p>
-                    <p>방 꾸미기</p>
+                <div
+                    onClick={() => router.push('/list')}
+                    className="flex w-[50%] cursor-pointer flex-col rounded-[22px] bg-white p-[2.0125em] text-center text-[22px] font-semibold shadow-custom"
+                >
+                    <p className="text-[18px] font-semibold md:text-[20px]">우리아지트</p>
+                    <p className="font-bold">방 꾸미기</p>
                     🎀<p className="text-[14px] text-[#929292]">쇼핑하기</p>
                 </div>
             </div>

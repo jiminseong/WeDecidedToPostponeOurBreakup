@@ -1,3 +1,3 @@
 import { atom } from 'jotai';
 
-export const pointState = atom<number | null>(0);
+export const pointState = atom<number>(0);
