@@ -32,7 +32,7 @@ const ListPage = () => {
     };
 
     const handleChange = () => {
-        router.push('/home?success=true');
+        router.push('/home/success');
     };
 
     return (
