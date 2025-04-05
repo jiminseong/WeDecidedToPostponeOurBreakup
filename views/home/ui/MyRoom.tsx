@@ -4,7 +4,7 @@ import prettyRoomImageUrl from '@/public/images/room-pretty.png';
 import Image from 'next/image';
 
 type MyRoomProps = {
-    pretty: boolean;
+    pretty?: boolean;
 };
 
 const MyRoom = ({ pretty }: MyRoomProps) => {

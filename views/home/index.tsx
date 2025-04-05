@@ -6,7 +6,7 @@ import BottomNavigationBar from './ui/BottomNavigationBar';
 import MyRoom from './ui/MyRoom';
 
 type HomePageProps = {
-    pretty: boolean;
+    pretty?: boolean;
 };
 
 const HomePage = ({ pretty }: HomePageProps) => {
