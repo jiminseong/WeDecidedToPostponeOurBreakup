@@ -33,7 +33,7 @@ export default function RootLayout({
                 />
                 <meta name="theme-color" content="#fcfff8" />
             </Head>
-            <body>
+            <body className="bg-[#3C3C3C]">
                 <Script
                     src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.3/kakao.min.js"
                     integrity="sha384-kLbo2SvoNtOFiniJ1EQ9o2iDA8i3xp+O6Cns+L5cd4RsOJfl+43z5pvieT2ayq3C"

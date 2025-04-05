@@ -9,8 +9,8 @@ interface Props {
 const PageWrapper = ({ paddingX = '16px', children, className, ...props }: Props) => {
     return (
         <div
-            className={`relative flex h-full flex-col gap-4 ${className}`}
-            style={{ paddingLeft: paddingX, paddingRight: paddingX }} // 좌우 패딩만 적용
+            className={`relative flex h-full flex-col gap-4 bg-white ${className}`}
+            style={{ paddingLeft: paddingX, paddingRight: paddingX }}
             {...props}
         >
             {children}

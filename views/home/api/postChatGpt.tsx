@@ -1,21 +1,11 @@
 import axios from 'axios';
 
 const postChatGpt = async (
-    input: string,
-    name: string,
-    age: string,
-    foodPreference: string,
-    travelPreference: string,
-    healthInformation: string,
+    image: string, //타입 미정
 ) => {
     try {
         const response = await axios.post('/api/gpt', {
-            input,
-            name,
-            age,
-            foodPreference,
-            travelPreference,
-            healthInformation,
+            image,
         });
         return response.data;
     } catch (error) {

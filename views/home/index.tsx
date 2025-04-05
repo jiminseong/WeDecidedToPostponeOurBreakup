@@ -1,12 +1,18 @@
 'use client';
+import PageWrapper from '@/widgets/wrapper/PageWrapper';
 import React from 'react';
+import TopNavigationBar from './ui/TopNavigationBar';
+import BottomNavigationBar from './ui/BottomNavigationBar';
+import MyRoom from './ui/MyRoom';
 
 const HomePage = () => {
     return (
         <>
-            <div className="relative h-[100vh] w-full overflow-hidden px-[1em] pb-[20%] pt-[35%] md:pb-[20%] md:pt-[15%]">
-                <div className="flex h-full w-full flex-col gap-[1em] overflow-scroll"></div>
-            </div>
+            <PageWrapper>
+                <TopNavigationBar />
+                <MyRoom />
+                <BottomNavigationBar />
+            </PageWrapper>
         </>
     );
 };

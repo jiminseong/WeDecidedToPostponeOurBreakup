@@ -6,32 +6,43 @@ const openai = new OpenAI({
 });
 
 export async function POST(req: NextRequest) {
-    const { input, name, age, foodPreference, travelPreference, healthInformation } = await req.json();
+    const { image, location = '스타벅스 경기 성남점' } = await req.json();
 
-    if (!name || !age || !foodPreference || !travelPreference || !healthInformation || !input) {
+    if (!image || !location) {
         return NextResponse.json({ error: '모든 정보가 필요합니다' }, { status: 400 });
     }
 
     try {
-        const prompt = `
-      역할: 제천에 관한 인공지능 제천 메이트입니다!
-      여러분의 여행 취향을 편하게 작성해주세요.
-
-      사용자가 보낸 질문: ${input}
-      사용자 이름: ${name}
-      사용자 나이: ${age}
-      음식 취향: ${foodPreference}
-      여행 취향: ${travelPreference}
-      건강 유의 정보: ${healthInformation}
-
-      위 정보를 이용해서 '대한민국 충북 제천시'의 여행 정보를 추천해드립니다.
-      다른 지역에 대한 정보는 제공하지 않으며, 제천에 맞는 추천만을 드립니다.
-      무엇보다 줄바꿈을 포함시켜 주세요.
-        `;
+        //TODO : 여기에 이미지가 텀블러인지 판별 isSuccess : true or false로 반환하는 프롬프팅이 필요
 
         const completion = await openai.chat.completions.create({
-            model: 'gpt-4',
-            messages: [{ role: 'user', content: prompt }],
+            model: 'gpt-4o',
+            messages: [
+                {
+                    role: 'user',
+                    content: [
+                        {
+                            type: 'text',
+                            text: `
+        당신은 친환경 활동 인증 도우미입니다.
+        아래 이미지를 분석해서 텀블러 인증 사진인지 판단해 주세요.
+        "텀블러가 명확하게 보이면 true, 아니면 false"로 판단해 주세요.
+        
+        결과는 JSON으로만:
+        { "isSuccess": true }
+        
+        장소: ${location}
+                  `,
+                        },
+                        {
+                            type: 'image_url',
+                            image_url: {
+                                url: image, // ← 여기 꼭 data:image/png;base64,... 로 전달!
+                            },
+                        },
+                    ],
+                },
+            ],
         });
 
         const responseText = completion.choices[0]?.message?.content || '응답을 생성할 수 없습니다.';
