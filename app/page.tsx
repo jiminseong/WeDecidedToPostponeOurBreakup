@@ -1,2 +1,2 @@
-import OnboardingPage from '@/views/onboarding';
-export default OnboardingPage;
+import SplashPage from '@/views/splash';
+export default SplashPage;

@@ -35,3 +35,7 @@ body {
         text-wrap: balance;
     }
 }
+
+.font-ownglyph {
+    font-family: var(--font-ownglyph), sans-serif !important;
+}

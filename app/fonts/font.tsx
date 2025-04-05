@@ -29,3 +29,12 @@ export const Pretendard = localFont({
         },
     ],
 });
+
+export const Ownglyph = localFont({
+    src: [
+        {
+            path: './Ownglyph-ryurue.ttf',
+            style: 'normal',
+        },
+    ],
+});

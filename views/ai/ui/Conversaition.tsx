@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import postChatGpt from '../api/postChatGpt';
-import Input from '@/widgets/input/Input';
 import Loading from './Loading';
 
 interface ConversaitionProps {}
@@ -97,14 +96,6 @@ const Conversaition: React.FC<ConversaitionProps> = ({}) => {
             </div>
 
             <div className="z-5 absolute bottom-4 box-border flex w-full gap-[1em]">
-                <Input
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="메시지를 입력하세요"
-                    className="w-full"
-                    disabled={isLoading}
-                />
                 <button onClick={handleSend} className="w-16 rounded-md bg-jgreen p-2 text-white" disabled={isLoading}>
                     전송
                 </button>

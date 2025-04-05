@@ -12,7 +12,7 @@
         "axios": "^1.7.7",
         "classnames": "2.5.1",
         "formidable": "^3.5.2",
-        "framer-motion": "11.5.4",
+        "framer-motion": "^11.5.4",
         "jotai": "^2.10.1",
         "ky": "1.7.2",
         "next": "^15.0.2",
