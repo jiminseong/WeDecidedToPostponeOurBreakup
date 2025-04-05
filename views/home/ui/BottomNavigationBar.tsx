@@ -2,10 +2,11 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useRef } from 'react';
-import postChatGpt from '../api/postChatGpt';
+// import postChatGpt from '../api/postChatGpt';
 import { useSetAtom } from 'jotai';
 import { imageUrlState } from '@/app/atom/imageAtom';
 import { resultState } from '@/app/atom/resultAtom';
+import { uploadImageToS3 } from '../api/uploadImageToS3';
 
 const BottomNavigationBar = () => {
     const router = useRouter();
@@ -18,35 +19,38 @@ const BottomNavigationBar = () => {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        const imageUrl = URL.createObjectURL(file);
+        try {
+            const imageUrl = await uploadImageToS3(file); // ✅ S3 업로드
+            setImageUrl(imageUrl);
 
-        setImageUrl(imageUrl);
-
-        const result = await postChatGpt(imageUrl);
-        if (result) {
-            setResult(result);
-            router.push('/result');
-        } else {
-            alert('GPT 응답 실패');
+            // const result = await postChatGpt(imageUrl); // GPT 전송
+            if (imageUrl) {
+                setResult(true);
+                router.push('/result');
+            } else {
+            }
+        } catch (err) {
+            console.error('업로드 중 오류:', err);
+            alert('이미지 업로드 실패');
         }
     };
 
     return (
         <>
             <div className="flex w-full justify-center gap-4">
-                <div className="flex w-[50%] cursor-pointer flex-col rounded-[22px] bg-white p-[2.0125em] text-center text-[22px] font-semibold shadow-custom">
-                    <p className="text-[18px] md:text-[20px]">환경 퀴즈</p>
-                    <p>같이 풀기</p>
-                    ✏️<p className="text-[14px] text-[#929292]">하루 1문제</p>
-                </div>
-
                 <div
                     onClick={() => fileInputRef.current?.click()}
                     className="flex w-[50%] cursor-pointer flex-col rounded-[22px] bg-white p-[2.0125em] text-center text-[22px] font-semibold shadow-custom"
                 >
                     <p className="text-[18px] md:text-[20px]">환경 보호</p>
                     <p>인증 하기</p>
-                    📷<p className="text-[14px] text-[#929292]">오늘 한 데이트</p>
+                    📷<p className="text-[14px] text-[#929292]">이별 미루기</p>
+                </div>
+
+                <div className="flex w-[50%] cursor-pointer flex-col rounded-[22px] bg-white p-[2.0125em] text-center text-[22px] font-semibold shadow-custom">
+                    <p className="text-[18px] md:text-[20px]">우리의 아지트</p>
+                    <p>방 꾸미기</p>
+                    🎀<p className="text-[14px] text-[#929292]">쇼핑하기</p>
                 </div>
             </div>
 

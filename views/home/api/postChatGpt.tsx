@@ -7,7 +7,7 @@ const postChatGpt = async (
         const response = await axios.post('/api/gpt', {
             image,
         });
-        return response.data;
+        return response;
     } catch (error) {
         console.error('Error sending request to ChatGPT:', error);
     }
