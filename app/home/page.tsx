@@ -1,2 +1,4 @@
 import HomePage from '@/views/home';
-export default HomePage;
+export default function Page() {
+    return <HomePage pretty={false} />;
+}
