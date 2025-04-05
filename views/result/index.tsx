@@ -13,7 +13,8 @@ import html2canvas from 'html2canvas';
 
 const ResultPage = () => {
     const router = useRouter();
-    const image = useAtomValue(imageUrlState);
+    const imageBase64 = useAtomValue(imageUrlState);
+
     const imageRef = useRef(null);
     const result = useAtomValue(resultState);
     const setImage = useSetAtom(imageUrlState);
@@ -53,7 +54,7 @@ const ResultPage = () => {
         setResult(false);
         await router.push('/home');
     };
-    if (!image) return null;
+    if (!imageBase64) return null;
 
     return (
         <div className="flex min-h-screen flex-col bg-black px-4 py-6 text-white">
@@ -69,7 +70,7 @@ const ResultPage = () => {
                 <Image
                     width={300}
                     height={300}
-                    src={image}
+                    src={imageBase64}
                     alt="업로드 이미지"
                     className="h-full w-full object-cover"
                     onLoad={() => setIsImageLoaded(true)}

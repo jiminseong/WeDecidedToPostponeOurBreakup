@@ -6,7 +6,7 @@ import React, { useRef } from 'react';
 import { useSetAtom } from 'jotai';
 import { imageUrlState } from '@/app/atom/imageAtom';
 import { resultState } from '@/app/atom/resultAtom';
-import { uploadImageToS3 } from '../api/uploadImageToS3';
+// import { uploadImageToS3 } from '../api/uploadImageToS3';
 import { ddayState } from '@/app/atom/ddayAtom';
 import { pointState } from '@/app/atom/pointAtom';
 
@@ -24,11 +24,16 @@ const BottomNavigationBar = () => {
         if (!file) return;
 
         try {
-            const imageUrl = await uploadImageToS3(file); // ✅ S3 업로드
-            setImageUrl(imageUrl);
+            // const imageUrl = await uploadImageToS3(file); // ✅ S3 업로드
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                const base64 = reader.result as string;
+                setImageUrl(base64);
+            };
 
             // const result = await postChatGpt(imageUrl); // GPT 전송
-            if (imageUrl) {
+            if (file) {
                 setResult(true);
                 setPoint((prev) => prev + 20);
                 setDday((prev) => prev + 10);
@@ -71,7 +76,7 @@ const BottomNavigationBar = () => {
                 capture="environment" // 모바일 카메라 촬영도 가능하게 함
                 ref={fileInputRef}
                 onChange={handleImageUpload}
-                className="absolute h-0 w-0 opacity-0"
+                className="absolute bottom-0 h-0 w-0 opacity-0"
             />
         </>
     );

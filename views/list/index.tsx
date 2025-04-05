@@ -7,21 +7,21 @@ import backIcon from '@/public/icons/icon/back.svg';
 import heartUrl from '@/public/icons/Heart.svg';
 import celndarUrl from '@/public/icons/Iconex/Filled/Calendar.svg';
 const items = [
-    { id: 1, name: '핑크벽지', days: 5, price: 1000, img: 'images/smallroom.png' },
+    { id: 1, name: '핑크벽지', days: 5, price: 1000, img: 'images/smallRoom.png' },
     { id: 2, name: '기본 침대', days: 7, price: 1000, img: 'images/whiteBead.png' },
-    { id: 3, name: '봄 이불', days: 14, price: 1500, img: 'images/Spring.png' },
+    { id: 3, name: '봄 이불', days: 14, price: 1500, img: 'images/spring.png' },
 
-    { id: 4, name: '핑크벽지', days: 5, price: 1000, img: 'images/smallroom.png' },
+    { id: 4, name: '핑크벽지', days: 5, price: 1000, img: 'images/smallRoom.png' },
     { id: 5, name: '기본 침대', days: 7, price: 1000, img: 'images/whiteBead.png' },
-    { id: 6, name: '봄 이불', days: 14, price: 1500, img: 'images/Spring.png' },
+    { id: 6, name: '봄 이불', days: 14, price: 1500, img: 'images/spring.png' },
 
-    { id: 7, name: '핑크벽지', days: 5, price: 1000, img: 'images/smallroom.png' },
+    { id: 7, name: '핑크벽지', days: 5, price: 1000, img: 'images/smallRoom.png' },
     { id: 8, name: '기본 침대', days: 7, price: 1000, img: 'images/whiteBead.png' },
-    { id: 9, name: '봄 이불', days: 14, price: 1500, img: 'images/Spring.png' },
+    { id: 9, name: '봄 이불', days: 14, price: 1500, img: 'images/spring.png' },
 
-    { id: 10, name: '핑크벽지', days: 5, price: 1000, img: 'images/smallroom.png' },
+    { id: 10, name: '핑크벽지', days: 5, price: 1000, img: 'images/smallRoom.png' },
     { id: 11, name: '기본 침대', days: 7, price: 1000, img: 'images/whiteBead.png' },
-    { id: 12, name: '봄 이불', days: 14, price: 1500, img: 'images/Spring.png' },
+    { id: 12, name: '봄 이불', days: 14, price: 1500, img: 'images/spring.png' },
 ];
 
 const ListPage = () => {
